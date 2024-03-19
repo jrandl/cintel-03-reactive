@@ -58,7 +58,7 @@ with ui.navset_card_underline():
         @render_plotly
         def Plotly_Histogram():
             return px.histogram(
-                data_frame=penguins,
+                data_frame=filtered_data(),
                 x=input.selected_attribute(),
                 nbins=input.plotly_bin_count(),
                 color="species",
@@ -69,7 +69,7 @@ with ui.navset_card_underline():
         @render.plot(alt="A Seaborn histogram on penguin body mass in grams.")
         def Seaborn_Histogram():
             return sns.histplot(
-                data=penguins,
+                data=filtered_data(),
                 x=input.selected_attribute(),
                 bins=input.seaborn_bin_count(),
                 hue="species",
@@ -80,7 +80,7 @@ with ui.navset_card_underline():
         @render_plotly
         def Plotly_Scatterplot():
             return px.scatter(
-                penguins,
+                filtered_data(),
                 x=input.selected_attribute(),
                 y="body_mass_g",
                 color="species",
