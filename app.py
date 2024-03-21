@@ -101,4 +101,5 @@ with ui.navset_card_underline():
 
 @reactive.calc
 def filtered_data():
-    return penguins
+    isSpeciesMatch = penguins["species"].isin(input.selected_species_list())
+    return penguins[isSpeciesMatch]
